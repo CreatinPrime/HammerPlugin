@@ -30,12 +30,12 @@ public class HammerPlugin extends JavaPlugin {
         if (meta != null) {
             meta.setDisplayName(displayName);
             // Attribute überschreiben
-            meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,
-                    new AttributeModifier(UUID.randomUUID(), "attack_damage", attackDamage - 1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND));
-            meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED,
-                    new AttributeModifier(UUID.randomUUID(), "attack_speed", attackSpeed + 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND));
-            hammer.setItemMeta(meta);
-        }
+            meta.addAttributeModifier(org.bukkit.attribute.Attribute.GENERIC_ATTACK_DAMAGE,
+    new AttributeModifier(UUID.randomUUID(), "generic.attack_damage", 10.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND));
+
+meta.addAttributeModifier(org.bukkit.attribute.Attribute.GENERIC_ATTACK_SPEED,
+    new AttributeModifier(UUID.randomUUID(), "generic.attack_speed", -2.8, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND));
+
 
         // Rezept definieren
         NamespacedKey key = new NamespacedKey(this, keyName);
