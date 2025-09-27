@@ -1,0 +1,6 @@
+name: HammerPlugin
+main: de.deinplugin.hammer.HammerPlugin
+version: 1.0
+api-version: 1.21
+author: DeinName
+description: Fügt craftbare Hämmer in allen Materialvarianten hinzu
