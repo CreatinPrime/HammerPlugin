@@ -33,15 +33,15 @@ public class HammerPlugin extends JavaPlugin {
         if (meta != null) {
             meta.setDisplayName(displayName);
 
-            // Attribute überschreiben
+            // Attribute überschreiben (Paper 1.21.x -> ATTACK_DAMAGE & ATTACK_SPEED)
             meta.addAttributeModifier(
-                    Attribute.GENERIC_ATTACK_DAMAGE,
-                    new AttributeModifier(UUID.randomUUID(), "generic.attack_damage", attackDamage, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND)
+                    Attribute.ATTACK_DAMAGE,
+                    new AttributeModifier(UUID.randomUUID(), "attack_damage", attackDamage, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND)
             );
 
             meta.addAttributeModifier(
-                    Attribute.GENERIC_ATTACK_SPEED,
-                    new AttributeModifier(UUID.randomUUID(), "generic.attack_speed", attackSpeed, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND)
+                    Attribute.ATTACK_SPEED,
+                    new AttributeModifier(UUID.randomUUID(), "attack_speed", attackSpeed, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND)
             );
 
             hammer.setItemMeta(meta);
