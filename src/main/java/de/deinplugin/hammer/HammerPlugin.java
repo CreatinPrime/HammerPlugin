@@ -5,7 +5,9 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.inventory.*;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -27,15 +29,23 @@ public class HammerPlugin extends JavaPlugin {
     private void registerHammer(String keyName, Material baseItem, Material recipeMat, String displayName, double attackDamage, double attackSpeed) {
         ItemStack hammer = new ItemStack(baseItem);
         ItemMeta meta = hammer.getItemMeta();
+
         if (meta != null) {
             meta.setDisplayName(displayName);
+
             // Attribute überschreiben
-            meta.addAttributeModifier(org.bukkit.attribute.Attribute.GENERIC_ATTACK_DAMAGE,
-    new AttributeModifier(UUID.randomUUID(), "generic.attack_damage", 10.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND));
+            meta.addAttributeModifier(
+                    Attribute.GENERIC_ATTACK_DAMAGE,
+                    new AttributeModifier(UUID.randomUUID(), "generic.attack_damage", attackDamage, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND)
+            );
 
-meta.addAttributeModifier(org.bukkit.attribute.Attribute.GENERIC_ATTACK_SPEED,
-    new AttributeModifier(UUID.randomUUID(), "generic.attack_speed", -2.8, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND));
+            meta.addAttributeModifier(
+                    Attribute.GENERIC_ATTACK_SPEED,
+                    new AttributeModifier(UUID.randomUUID(), "generic.attack_speed", attackSpeed, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND)
+            );
 
+            hammer.setItemMeta(meta);
+        }
 
         // Rezept definieren
         NamespacedKey key = new NamespacedKey(this, keyName);
